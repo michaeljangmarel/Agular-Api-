@@ -1,0 +1,47 @@
+ <div class="container mt-5">
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    <a [routerLink]="['/']">
+                        <h3 class="">Employee Form</h3>
+                    </a>
+                </div>
+                <div class="card-body p-3">
+                    <form #empForm ='ngForm'>
+                        <div class="">
+                            <label for="">First Name</label>
+                            <input type="text" class="form-control {{firstName.touched && firstName.invalid ? 'is-invalid' :''}} " 
+                            #firstName ='ngModel' 
+                            name="firstName" [ngModel]="employee.firstName" required>
+                            @if (firstName?.errors?.['required']) {
+                                <small class="invalid-feedback">firstName Required</small>
+                            }
+                        </div>
+                        <div class="">
+                            <label for="">Last Name</label>
+                            <input type="text" class="form-control" name="lastName" [ngModel]="employee.lastName">
+                        </div>
+                        <div class="">
+                            <label for="">Email</label>
+                            <input type="email" class="form-control" name="email" [ngModel]="employee.email" required>
+                        </div>
+                        <div class="">
+                            <label for="">Phone</label>
+                            <input type="number" class="form-control" name="phone" [ngModel]="employee.phone" required>
+                        </div>
+                        <div class="">
+                            <label for="">Date</label>
+                            <input type="date" class="form-control" name="hiredDate" [ngModel]="employee.hiredDate" required>
+                        </div>
+                        <div class="">
+                            <label for="">Salary</label>
+                            <input type="number" class="form-control" name="salary" [ngModel]="employee.salary" required>
+                        </div>
+                            <button type="submit" (click)="createEmployee(empForm.value)" class="btn btn-success mt-3">Save</button>
+                     </form>
+                </div>
+            </div>
+        </div>
+    </div>
+ </div>

@@ -1,0 +1,40 @@
+<a href="" class="btn btn-primary mt-5 ms-4" [routerLink]="['/emp-form']">Add Employee</a>
+<table class="table mt-5 p-3">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+        <th scope="col">Email</th>
+        <th scope="col">Phone</th>
+        <th scope="col">Hired Date</th>
+        <th scope="col">Salary</th>
+         <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+        @for (e of (employee$ | async); track $index) {
+            <tr>
+                <th scope="row">{{e.id}}</th>
+                <td>{{e.firstName}}</td>
+                <td>{{e.lastName}}</td>
+                <td>
+                    {{ e.email}}
+                </td>
+                <td>
+                    {{ e.phone}}
+                </td>
+                <td>
+                    {{ e.hiredDate}}
+                </td>
+                <td>
+                    {{ e.salary}}
+                </td>
+                <td>
+                    <button (click)="deleteByIdEmp(e.id)" class="btn btn-danger">Delete</button>
+                    <button (click)="updateEmployee(e.id)" class="btn btn-success ms-4">Edit</button>
+                </td>
+              </tr>
+        }
+    </tbody>
+  </table>
